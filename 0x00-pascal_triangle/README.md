@@ -56,7 +56,7 @@ function pascal_triangle(n):
 			curr = [1];
 		else:
 			for j in range(0, i + 1):
-				if j === 0 or j === 1:
+				if j === 0 or j === i:
 					curr.add(1);
 					continue;
 				curr.add( prev[j - 1] + prev[j] );				
