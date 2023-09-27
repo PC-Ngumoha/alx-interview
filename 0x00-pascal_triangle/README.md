@@ -15,19 +15,18 @@ _A different way to describe the triangle is to view the first line is an infini
 
 **Sample Case**: Let's we are told to find the pascal's triangle of the number 5, It will be good to picture this as a matrix as shown below with the matrix being synonymous with an array of arrays, each row of the matrix will represent the element/constituent arrays and each column representing an index in the constituent array.
 
-  	**0	1	2	3	4	5**
+		0	1	2	3	4	5
+	0	1
 
-	**0**	1
+	1	1	1
 
-	**1**	1	1
+	2	1	2	1	
 
-	**2**	1	2	1	
+	3	1	3	3	1
 
-	**3**	1	3	3	1
+	4	1	4	6	4	1
 
-	**4**	1	4	6	4	1
-
-	**5**	1	5	10	10	5	1
+	5	1	5	10	10	5	1
 
 
 So, I'm noticing a trend, A few points to note:
