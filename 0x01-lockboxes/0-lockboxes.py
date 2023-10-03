@@ -39,8 +39,8 @@ def canUnlockAll(boxes):
             visited.add(current_box)
             keys = boxes[current_box]
 
-        for key in keys:
-            if key >= 0 and key < n_boxes:
-                key_stack.append(key)
+            for key in keys:
+                if key >= 0 and key < n_boxes:
+                    key_stack.append(key)
 
     return n_boxes == len(visited)
