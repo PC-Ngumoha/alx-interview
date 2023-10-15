@@ -19,7 +19,7 @@ def minOperations(n: int) -> int:
         - num_ops (int) -> number of operations required to create n H
         characters
     """
-    if n <= 0:
+    if n <= 1:
         return 0
     all_ops = [0] * (n + 1)
 
