@@ -36,29 +36,52 @@ file: `Copy All` and `Paste`
 
 # RECURSIVE APPROACH
 
-def minOperations(n: int, memo: dict = {}) -> int:
+# 1
+
+# def minOperations(n: int, memo: dict = {}) -> int:
+#     """
+#     minOperations(n)
+
+#     Args:
+#         - n (int) -> number of H characters to create
+#         - memo (dict) -> a cache to store the values from previous recursions
+
+#     Returns:
+#         - num_ops (int) -> number of operations required to create n H
+#         characters
+#     """
+#     if n in memo:
+#         return memo[n]
+
+#     if n <= 1:
+#         return 0
+
+#     min_ops = n
+
+#     for i in range(2, n // 2 + 1)[::-1]:
+#         if n % i == 0:
+#             min_ops = min(min_ops, minOperations(i, memo) + n // i)
+
+#     memo[n] = min_ops
+#     return min_ops
+
+
+# 2 -> From Shobi
+
+def minOperations(n: int, ops: int = 0) -> int:
     """
     minOperations(n)
 
     Args:
-        - n (int) -> number of H characters to create
-        - memo (dict) -> a cache to store the values from previous recursions
+        - n (int) -> number of 'n' H characters to create
+        - ops (int) -> number of operations to get n H chars
 
     Returns:
-        - num_ops (int) -> number of operations required to create n H
-        characters
+        - min number of ops
     """
-    if n in memo:
-        return memo[n]
-
-    if n <= 1:
+    if (n <= 1):
         return 0
-
-    min_ops = n 
-
-    for i in range(2, n // 2 + 1):
+    for i in range(2, (n // 2) + 1)[::-1]:
         if n % i == 0:
-            min_ops = min(min_ops, minOperations(i, memo) + n // i)
-
-    memo[n] = min_ops
-    return min_ops
+            return minOperations(i, ops + (n / i))
+    return int(ops + n)
