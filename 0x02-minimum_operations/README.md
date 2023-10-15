@@ -34,39 +34,26 @@ H => Copy All => Paste => HH => Copy All => Paste => HHHH => Copy All => Paste =
 
 
 
-After thinking about this for a while and how it works, I came with this algorithm which I hope can solve all cases of this problem:
+After thinking about this for a while and how it works and trial and error, I came up with this algorithm which utilizes the concept of dynamic programming to solve all cases of this problem.
+I hope can solve all cases of this problem:
 
 **Pseudocode**
-
 ```
-function minOps(n) -> {
-	let numOps = 0;
-	let copyBuffer = '';
-	let textBuffer = 'H';
+function minOperations(n) -> {
 
+  min_ops = [0] * (n + 1) // Creating n + 1 slots
 
-	LOOP FOREVER {
-		
-		if length(textBuffer) == n {
-			RETURN numOps;
-		}
+  FOR i in RANGE(2, n + 1) {
+    // set this stage to the worst case scenario number of operations possible
+    min_ops[i] = i;
 
-		if length(textBuffer) > n OR numOps > n {
-			RETURN 0;
-		}
-
-		// Copy All Operation
-		if MODULUS(n, length(textBuffer)) == 0 {
-			copyBuffer = textBuffer;
-			numOps += 1;
-		}
-
-		// Paste Operation
-		CONCATENATE(textBuffer, copyBuffer);
-		numOps += 1;
-		
-	}
-
+    // Check to see if there can be a better case scenario
+    FOR j in RANGE(2, i // 2 + 1) {
+      if i % j == 0 {
+        min_ops[i] = MINIMUM(min_ops[i], min_ops[j] + i // j)
+      }
+    }
+  }
+  return min_ops[n];
 }
 ```
-

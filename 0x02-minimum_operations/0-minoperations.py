@@ -19,17 +19,14 @@ def minOperations(n: int) -> int:
         - num_ops (int) -> number of operations required to create n H
         characters
     """
-    num_ops: int = 0
-    copy_buffer: str = ''
-    text_buffer: str = 'H'
+    if n < 0:
+        return 0
+    all_ops = [0] * (n + 1)
 
-    while True:
-        if len(text_buffer) == n:
-            return num_ops
-        if len(text_buffer) > n or num_ops > n:
-            return 0
-        if n % len(text_buffer) == 0:
-            copy_buffer = text_buffer
-            num_ops += 1
-        text_buffer += copy_buffer
-        num_ops += 1
+    for i in range(2, n + 1):
+        all_ops[i] = i
+
+        for j in range(2, i // 2 + 1):
+            if i % j == 0:
+                all_ops[i] = min(all_ops[i], all_ops[j] + i // j)
+    return all_ops[n]
