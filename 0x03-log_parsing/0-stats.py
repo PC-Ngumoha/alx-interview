@@ -19,9 +19,7 @@ if __name__ == '__main__':
     total_size = 0
     s_codes = {}
     try:
-        while True:
-            line = sys.stdin.readline()
-
+        for line in sys.stdin:
             if count % 10 == 0 and count != 0:
                 print('File Size: {}'.format(total_size))
                 for s_code in s_codes:
