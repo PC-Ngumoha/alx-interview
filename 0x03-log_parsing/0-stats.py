@@ -22,15 +22,13 @@ if __name__ == '__main__':
         while True:
             line = sys.stdin.readline()
 
-            if count >= 10:
+            if count % 10 == 0 and count != 0:
                 print('File Size: {}'.format(total_size))
                 for s_code in s_codes:
                     print('{}: {}'.format(
                         s_code,
                         s_codes[s_code]
                     ))
-                count = 0
-                s_codes = {}
 
             line_match = re.fullmatch(pattern1, line.rstrip())
             if not line_match:
