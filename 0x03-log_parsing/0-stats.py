@@ -20,6 +20,8 @@ if __name__ == '__main__':
     s_codes = {}
     try:
         for line in sys.stdin:
+            if not line:
+                break
             if count % 10 == 0 and count != 0:
                 print('File Size: {}'.format(total_size))
                 for s_code in s_codes:
