@@ -22,7 +22,7 @@ main:
   try:
     LOOP FOREVER:
 		  line = stdin.readline()
-			
+
 			if line == EOF:
 				print('File Size: {total_size}')
 				for s_code in s_codes:
@@ -38,8 +38,9 @@ main:
 		    continue  # Read the next line in stdin
 	    else:
 		    s_code, file_size = MATCH(PATTERN2, line)
-		    total_size += int(file_size)
-		    if s_code in s_codes:
+		    if typeof file_size can be int:
+					total_size += int(file_size)
+		    if s_code in s_codes and typeof s_code can be int:
 			    s_codes[s_code] += 1
 		    else:
 			    s_codes[s_code] = 1

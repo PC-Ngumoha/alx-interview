@@ -30,9 +30,9 @@ def print_stats(f_size: int, status_codes: Mapping[str, int]) -> None:
 if __name__ == '__main__':
     line_pattern = ''.join((
         r'^.+\s*-?\s*\[\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}',
-        r'\.\d{6}\]\s*".+"\s*[1-5]\d{2}\s\d+$'
+        r'\.\d{6}\]\s*".+"\s*\S+\s\S+$'
     ))
-    data_pattern = r'\b[1-5]\d{2} \d+$'
+    data_pattern = r'\b\S+\s\S+$'
     line_count = 0
     total_size = 0
     s_codes = {"200": 0, "301": 0, "400": 0,
@@ -50,9 +50,10 @@ if __name__ == '__main__':
                 continue
             else:
                 data_segment = re.search(data_pattern, line.rstrip())
-                s_code, file_size = data_segment.group().split()
-                total_size += int(file_size)
-                s_codes[s_code] += 1
+                s_code, f_size = data_segment.group().split()
+                total_size += int(f_size) if f_size.isnumeric() else 0
+                if s_code.isnumeric():
+                    s_codes[s_code] += 1
             line_count += 1
     except KeyboardInterrupt:
         print_stats(total_size, s_codes)
