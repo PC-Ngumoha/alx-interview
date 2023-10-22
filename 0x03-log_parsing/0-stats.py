@@ -4,41 +4,55 @@
 A script that reads the lines from the standard input (stdin)
 and then use it to compute matrics which it then displays to the user.
 """
+from typing import Mapping
 import re
 import sys
 
 
+# Helper function
+def print_stats(f_size: int, status_codes: Mapping[str, int]) -> None:
+    """
+    print_stats(f_size, status_codes)
+
+    Args:
+        - f_size (int) -> accumulated file size
+        - status_codes (mapping) -> status code mapping
+
+    Returns:
+        - None
+    """
+    print('File size: {}'.format(f_size))
+    for status_code in status_codes:
+        if status_codes[status_code] > 0:
+            print('{}: {}'.format(status_code, status_codes[status_code]))
+
+
 if __name__ == '__main__':
-    pattern1 = ''.join((
-        r'^\d{1,3}(?:\.\d{1,3}){3} - \[\d{4}-\d{1,2}-\d{1,2}',
-        r' \d{2}:\d{2}:\d{2}\.\d{1,6}\] \"GET \/projects\/260',
-        r' HTTP\/1\.1\" [1-5]\d{2} \d+$'
+    line_pattern = ''.join((
+        r'^.+\s*-?\s*\[\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}',
+        r'\.\d{6}\]\s*".+"\s*[1-5]\d{2}\s\d+$'
     ))
-    pattern2 = r'\b[1-5]\d{2} \d+$'
-    count = 0
+    data_pattern = r'\b[1-5]\d{2} \d+$'
+    line_count = 0
     total_size = 0
     s_codes = {"200": 0, "301": 0, "400": 0,
                "401": 0, "403": 0, "404": 0, "405": 0, "500": 0}
     try:
-        for line in sys.stdin:
-            if not line:
+        while True:
+            line = sys.stdin.readline()
+            if line.strip() == '':
+                print_stats(total_size, s_codes)
                 break
-            if count % 10 == 0 and count != 0:
-                print('File size: {}'.format(total_size))
-                for s_code in s_codes:
-                    if s_codes[s_code] > 0:
-                        print('{}: {}'.format(s_code, s_codes[s_code]))
-            line_match = re.fullmatch(pattern1, line.rstrip())
+            if line_count % 10 == 0 and line_count != 0:
+                print_stats(total_size, s_codes)
+            line_match = re.fullmatch(line_pattern, line.rstrip())
             if not line_match:
                 continue
             else:
-                segment_match = re.search(pattern2, line.rstrip())
-                s_code, file_size = segment_match.group().split(' ')
+                data_segment = re.search(data_pattern, line.rstrip())
+                s_code, file_size = data_segment.group().split()
                 total_size += int(file_size)
                 s_codes[s_code] += 1
-            count += 1
+            line_count += 1
     except KeyboardInterrupt:
-        print('File size: {}'.format(total_size))
-        for s_code in s_codes:
-            if s_codes[s_code] > 0:
-                print('{}: {}'.format(s_code, s_codes[s_code]))
+        print_stats(total_size, s_codes)

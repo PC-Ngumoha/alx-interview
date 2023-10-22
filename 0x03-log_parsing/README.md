@@ -22,6 +22,11 @@ main:
   try:
     LOOP FOREVER:
 		  line = stdin.readline()
+			if line == EOF:
+				print('File Size: {total_size}')
+				for s_code in s_codes:
+					print('{s_code}: {s_codes[s_code]}')	
+
 	    if count % 10 == 0 and count != 0:
 		    print('File Size: {total_size}')
 		    for s_code in s_codes:
