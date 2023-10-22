@@ -21,19 +21,19 @@ main:
   s_codes = {}
   try:
     LOOP FOREVER:
-		  line = stdin.readline()
+      line = stdin.readline()
 
-			if line == EOF:
-				print('File Size: {total_size}')
-				for s_code in s_codes:
-					print('{s_code}: {s_codes[s_code]}')	
+      if line == EOF:
+        print('File Size: {total_size}')
+        for s_code in s_codes:
+          print('{s_code}: {s_codes[s_code]}')	
 
-	    if count % 10 == 0 and count != 0:
-		    print('File Size: {total_size}')
-		    for s_code in s_codes:
-		    	print('{s_code}: {s_codes[s_code]}')	
+      if count % 10 == 0 and count != 0:
+        print('File Size: {total_size}')
+        for s_code in s_codes:
+          print('{s_code}: {s_codes[s_code]}')	
 	
-	    line_match = MATCH(PATTERN1, line)
+      line_match = MATCH(PATTERN1, line)
 	    if line_match is false:
 		    continue  # Read the next line in stdin
 	    else:
