@@ -22,6 +22,7 @@ main:
   try:
     LOOP FOREVER:
 		  line = stdin.readline()
+			
 			if line == EOF:
 				print('File Size: {total_size}')
 				for s_code in s_codes:
