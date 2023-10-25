@@ -23,8 +23,8 @@ def validUTF8(data: List[int]) -> bool:
         return False
 
     for elem in data:
-        # if elem is None:
-        #     return False
+        if elem is None or type(elem) is not int:
+            return False
         elem_bin = bin(elem)[2:].zfill(8)
         # print(elem_bin, end=' ')
         if len(elem_bin) > 8 or elem_bin[0] != '0':
