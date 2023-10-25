@@ -19,7 +19,7 @@ def validUTF8(data: List[int]) -> bool:
     Returns:
       - A bool representing whether it's valid or not.
     """
-    if data is None or len(data) == 0:
+    if data is None:
         return False
 
     for elem in data:
