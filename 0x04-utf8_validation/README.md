@@ -92,12 +92,19 @@ I observed that in all cases the dataset that seemed to pass was the one which i
 **Pseudocode:**
 
 ```
-function valid_utf(data):
-	for elem in data:
-		elem = BINARY(elem).toString().padWithZeroToEightPlaces()
-		if elem.length() > 8 || elem[0] != '0' :
-			return FALSE
-	return TRUE
+function valid_utf8(data_set):
+    for data in data_set:
+        if data < 0 or data > 255:
+            return FALSE
+        data_bin = BINARY(data, 8)
+        if data_bin[0] != '0':
+            return FALSE
+        if data_bin.length() != 8:
+            return FALSE
+        data_dec = DECIMAL(data_bin)
+        if data_dec > 127:
+            return FALSE
+    return TRUE
 ```
 
 
