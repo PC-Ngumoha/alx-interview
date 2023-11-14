@@ -31,7 +31,7 @@
 HOW (At Input):
 
 ```
-	  i0	i1	i2
+    i0  i1  i2
 j0	1	  2	  3
 
 j1	4	  5	  6
@@ -62,8 +62,8 @@ END PROGRAM
 HOW (At Output):
 
 ```
-    j2	j1	j0
-i0	7	  4	  1
+    j2  j1  j0
+i0	7   4   1
 
 i1	8	  5	  2
 
