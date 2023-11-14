@@ -62,12 +62,12 @@ END PROGRAM
 HOW (At Output):
 
 ```
-    j2  j1  j0
-i0	7   4   1
+  j2  j1  j0
+i0  7 4 1
 
-i1	8	  5	  2
+i1  8 5 2
 
-i2	9	  6	  3
+i2  9 6 3
 ```
 
 
