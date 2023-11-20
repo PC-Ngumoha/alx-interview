@@ -17,3 +17,5 @@ A collection of mock technical interview questions. Here's a comprehensive list:
 - [Querying the public Starwars A.P.I](https://github.com/PC-Ngumoha/alx-interview/tree/main/0x06-starwars_api)
 
 - [Rotating a 2D matrix](https://github.com/PC-Ngumoha/alx-interview/tree/main/0x07-rotate_2d_matrix)
+
+- [Making Change](https://github.com/PC-Ngumoha/alx-interview/tree/main/0x08-making_change)
