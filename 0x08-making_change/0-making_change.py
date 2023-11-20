@@ -19,4 +19,20 @@ def makeChange(coins: List[int], total: int) -> int:
     Returns:
       - change: The count of coins needed to meet total or -1 if not possible.
     """
-    pass
+    count = 0
+    denominations = sorted(coins, reverse=True)
+
+    if total == 0:
+        return count
+
+    while len(denominations) > 0:
+        current = denominations[0]
+        if total >= current:
+            count += int(total / current)
+            total %= current
+        if total == 0:
+            break
+        denominations.pop(0)
+    if len(denominations) == 0:
+        count = -1
+    return count
