@@ -9,7 +9,7 @@ a given amount
 from typing import List
 
 
-def makeChange(coins: List[int], total: int) -> int:
+def makeChange(coins, total):
     """Determines minimum number of coins to use as change for total.
 
     Parameter:
@@ -22,7 +22,7 @@ def makeChange(coins: List[int], total: int) -> int:
     count = 0
     denominations = sorted(coins, reverse=True)
 
-    if total == 0:
+    if total <= 0:
         return count
 
     while len(denominations) > 0:

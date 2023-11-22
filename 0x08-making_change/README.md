@@ -34,7 +34,3 @@ func makeChange(coins, total):
     count = -1
   Return count
 ```
-
-[2, 10, 20] -> 1
-[]
--1

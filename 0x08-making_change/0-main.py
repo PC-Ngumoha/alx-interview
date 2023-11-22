@@ -11,6 +11,6 @@ start_time = time.perf_counter()
 
 # print(makeChange([1256, 54, 48, 16, 102], 1453))
 
-print(makeChange())
+print(makeChange([1256, 54, 48, 16, 102], -1453))
 
 print(f'Elapsed Time: {time.perf_counter() - start_time} seconds')
