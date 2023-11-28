@@ -33,7 +33,9 @@ def island_perimeter(grid):
         return (get_perimeter(i, j-1) + get_perimeter(i-1, j)
                 + get_perimeter(i, j+1) + get_perimeter(i+1, j))
 
+    result = 0
     for row in range(len(grid)):
         for col in range(len(grid[row])):
             if grid[row][col] == 1:
-                return get_perimeter(row, col)
+                result = get_perimeter(row, col)
+    return result
