@@ -21,3 +21,5 @@ A collection of mock technical interview questions. Here's a comprehensive list:
 - [Making Change](https://github.com/PC-Ngumoha/alx-interview/tree/main/0x08-making_change)
 
 - [Island Perimeter](https://github.com/PC-Ngumoha/alx-interview/tree/main/0x09-island_perimeter)
+
+- [Prime Game](https://github.com/PC-Ngumoha/alx-interview/tree/main/0x0A-primegame)
